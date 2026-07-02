@@ -20,7 +20,7 @@
 <br>
 
 <p align="center">
-  <img src="assets/teaser.png" alt="RCORE teaser" width="100%">
+  <img src="assets/teaser.svg" alt="RCORE teaser" width="100%">
 </p>
 
 ---
