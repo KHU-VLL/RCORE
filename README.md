@@ -125,7 +125,7 @@ Reports top-1 accuracy (Comp / Verb / Object) and $\Delta_{\text{CG}}$ for **bot
 torchrun --nproc_per_node=8 test.py --logpath <path-to-training-run>
 ```
 
-### Biased evaluation (`--test_bias`)
+### Biased evaluation
 
 Sweeps a bias term added to unseen-composition logits and reports open-world and closed-world curves.
 
@@ -133,7 +133,7 @@ Sweeps a bias term added to unseen-composition logits and reports open-world and
 torchrun --nproc_per_node=8 test.py --logpath <path-to-training-run> --test_bias
 ```
 
-### Closed-world AUC (`--test_auc`)
+### Closed-world AUC 
 
 Computes AUC over the closed-world seen/unseen trade-off.
 
