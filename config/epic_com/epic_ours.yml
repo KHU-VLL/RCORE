@@ -1,0 +1,114 @@
+#======method setting======
+model:
+  framework: vlm_single_label #vlm or vm
+  method: clip_c2c
+  text_encoding_manner: component #composition, component, c2c_vanilla, c2c_enhance
+  backbone: "ViT-B/16"
+  pred_mode: both
+  prompt_learn_method: coop
+
+  # CPR
+  use_CPR: True
+  CPR_aug_prob: 0.95
+  CPR_alpha: 2.0
+  CPR_lambda: 0.5  
+  CPR_OW_com_loss_scale : 1.0
+  CW_com_loss_scale : 0.0
+  use_FAME: True
+  fame_beta: 0.4
+
+  use_cooc_penalty: True
+  cooc_penalty_loss_scale: 0.5
+  train_cooc_threshold: 1.0
+  cooc_penalty_margin: 0.5
+  cooc_penalty_loss_scale_start: 35
+  cooc_penalty_loss_scale_end: 40
+  cooc_mask_type: p_v_o_on_o_and_v
+
+  # TORC
+  temporal_modeling_shuffle: True
+  temporal_modeling_shuffle_type: cosine_entropy
+  temporal_modeling_shuffle_loss_scale: 1.0
+  penalty_loss_scale_start: 5
+  penalty_loss_scale_end: 10
+
+  # FSP & FCP 
+  val_with_confusion : True
+
+
+
+text:
+  text_input_type: template #vanilla:v+o,template:fix template+v+o, :[P1,P2,P3], VERB, [P4,P5,P6,P7],OBJECT, [P8,P9,P10,P11],
+  input_template: "An action of which the dominating object is x and the verb is x" #valid if text_input_type is template
+  input_template_verb: "A verb of  x" #valid
+  input_template_obj: "An object of  x" #valid
+  input_template: "a photo of x" #valid
+  learn_input: true # if false, no prompt learning
+  learn_input_method: zero #coop,csp or dfsp #valid if learn_input is true
+  verb_length_type: natural # one or natural ##### maybe useless!
+  ctx_init: true #initialization for ctx. valid if learn_input is true
+  #===train===
+  text_lr: 0.00001
+  text_wd: 0.00001
+  ctx_length: 77
+
+
+data:
+  dataset: sth-com
+  #set as your own path
+  dataset_path: "your_video_path"
+  split_root: "./data_split/ek100-com"
+  num_frames: 16
+  num_workers: 6
+
+#======compositional module setting======
+c2c:
+  nlayers: 2
+  fc_emb: 768,1024,1200
+  feat_dim: 512
+  emb_dim: 512
+  relu: False
+
+#======visual encoder setting======
+visual:
+  pretrained: CLIP
+  num_frames: 16
+  adapt_star_layer: 6
+  num_tadapter: 2
+  num_workers: 8
+  cosine_scale: 14
+  visual_lr: 0.0001
+  visual_wd: 0.0001
+
+code_adapt:
+  arch: vit
+  aux_input: False
+  ade_input: False
+
+
+#======general training setting======
+train:
+  train_batch_size: 16
+  gradient_accumulation_steps: 1
+  seed: 0
+  epochs: 40
+  val_epochs_ts: 45
+  warmup: 3
+  epoch_start: 0
+  save_path: "log_path"
+  load_model: False
+  best_model_metric: hm_comp_acc     #best_unseen  best_seen AUC best_loss best_hm
+  eval_every_n: 1
+  save_every_n: 1
+  # val_start_epoch: 20
+  aux_input: False
+  ade_input: False
+
+test:
+  eval_batch_size: 24
+  open_world: False
+  topk: 1
+  text_encoder_batch_size: 24
+  bias: 0.001
+  pretrain: False
+  load_model:  YOUR_PATH

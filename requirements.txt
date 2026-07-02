@@ -1,0 +1,18 @@
+torch
+torchvision
+numpy
+scipy
+pyyaml
+tqdm
+Pillow
+opencv-python
+decord
+einops
+kornia
+ftfy
+regex
+timm
+open_clip_torch
+transformers
+peft
+# flash-attn
