@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://arxiv.org/pdf/2601.16211"><img src="https://img.shields.io/badge/📄-arXiv-b31b1b?style=plastic" alt="arXiv"></a>
   <a href="https://ahngeo.github.io/assets/html/RCORE.html"><img src="https://img.shields.io/badge/🌐-Project_Page-blue?style=plastic" alt="Project Page"></a>
-  <<a href="https://huggingface.co/papers/2601.16211"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fhuggingface.co%2Fapi%2Fpapers%2F2601.16211&query=%24.upvotes&label=🤗%20Daily%20Papers&suffix=%20upvotes&color=FFD21E&style=plastic" alt="HuggingFace"></a>
+  <a href="https://huggingface.co/papers/2601.16211"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fhuggingface.co%2Fapi%2Fpapers%2F2601.16211&amp;query=%24.upvotes&amp;label=HF%20Upvotes&amp;logo=huggingface&amp;logoColor=black&amp;color=FFD21E&amp;style=plastic" alt="HuggingFace"></a>
 </p>
 
 <h3 align="center">Why Can't I Open My Drawer? Mitigating Object-Driven Shortcuts in Zero-Shot Compositional Action Recognition</h3>
